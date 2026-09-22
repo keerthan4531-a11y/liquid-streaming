@@ -101,8 +101,9 @@ dependencies {
         exclude(group = "androidx.compose.animation")
     }
 
-    // Coil for Image Loading
+    // Coil for Image Loading & Animated GIFs
     implementation("io.coil-kt:coil-compose:2.5.0")
+    implementation("io.coil-kt:coil-gif:2.5.0")
 
     // Accompanist — System UI Controller (transparent status bar)
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.34.0")

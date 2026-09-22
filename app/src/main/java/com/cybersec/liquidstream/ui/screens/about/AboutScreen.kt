@@ -2,6 +2,12 @@ package com.cybersec.liquidstream.ui.screens.about
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import coil.ImageLoader
+import coil.compose.AsyncImage
+import coil.decode.GifDecoder
+import coil.decode.ImageDecoderDecoder
+import coil.request.ImageRequest
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
@@ -590,10 +596,64 @@ fun AboutScreen(
                             color = Color.White.copy(alpha = 0.45f)
                         )
                     }
+
+                    Spacer(modifier = Modifier.height(20.dp))
+
+                    // Animated GIF Banner (Playing LMEB.gif at the end of About)
+                    LiquidGlassGifBanner(
+                        state = state,
+                        modifier = Modifier.fillMaxWidth()
+                    )
                 }
             }
 
             Spacer(modifier = Modifier.height(40.dp))
+        }
+    }
+}
+
+@Composable
+private fun LiquidGlassGifBanner(
+    state: LiquidGlassState,
+    modifier: Modifier = Modifier
+) {
+    val context = LocalContext.current
+    val imageLoader = remember(context) {
+        ImageLoader.Builder(context)
+            .components {
+                if (Build.VERSION.SDK_INT >= 28) {
+                    add(ImageDecoderDecoder.Factory())
+                } else {
+                    add(GifDecoder.Factory())
+                }
+            }
+            .build()
+    }
+
+    GlassCard(
+        state = state,
+        shape = RoundedCornerShape(20.dp),
+        tintOverride = Color(0xCC0E0A1E),
+        modifier = modifier
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(20.dp)),
+            contentAlignment = Alignment.Center
+        ) {
+            AsyncImage(
+                model = ImageRequest.Builder(context)
+                    .data(R.drawable.lmeb)
+                    .crossfade(true)
+                    .build(),
+                imageLoader = imageLoader,
+                contentDescription = "LiquidStream Banner Animation",
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(18.dp))
+            )
         }
     }
 }
