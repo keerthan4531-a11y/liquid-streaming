@@ -33,18 +33,6 @@
 
 ---
 
-## 📱 App Preview
-
-<p align="center">
-  <img src="screenshots/Screenshot%202026-09-22%20194121.png" width="30%" alt="LiquidStream Screen 1" />
-  &nbsp;&nbsp;
-  <img src="screenshots/Screenshot%202026-09-22%20195113.png" width="30%" alt="LiquidStream Screen 2" />
-  &nbsp;&nbsp;
-  <img src="screenshots/Screenshot%202026-09-22%20195534.png" width="30%" alt="LiquidStream Screen 3" />
-</p>
-
----
-
 ## 📸 Key Features Deep-Dive
 
 ### 1. 💎 Apple iOS Liquid Glass UI Paradigm
